@@ -1,0 +1,30 @@
+In regression testing Re executing the pass test cases .In regression testing RTM can be prepared(Req.traceability matrix).This testing is generally carried out by software tester.Impact Analysis:-It suggest that "How much regression to be done"?
+RTM:-It is a document which shows that, cross reference relationship between requirements & test cases.
+
+
+
+
+https://mrveep.com/admin/index.php#--->link For opening dashboard page...
+
+**Defects in dashboard(jobseeker & restaurent owner):-
+1.In dashboard for Jobseeker-->by selecting Category for withcv,for withoutcv,for others..are not showing seperate data tables...
+2.No any action performed on clicking Management,Marketing option/button ..
+3.No any action performed on clicking UPDATE PRICE button of each package....
+4.After coming on dashboard page, if we click on package botton(showing in row)-->showing packages..,but other modules(Marketing,Management) are not working..Columnwise(showing in left side)-->Packages,PropertyOwners,vendors,Job Seekers are working..,but other modules(Marketing,Management) are not working..
+5.In Packages,in Restaurent Owners,Vendors--->Update Packages button is not working..
+
+
+
+***Defects in Jobseeker Module:-(By Manual Testing):-
+1.For jobseeker-->in edit profile-->for first name,for last name-->special characters,numbers accepted.
+2.For jobseeker-->in edit profile-->for specialisation,For last employment,For About work experience-->special characters  accepted.
+3.For Mobile no-->Symbols,alphabets accepted.
+4.For Jobseeker-->Last option on that page,Career Advice,Free Job Alert,Find Companies,Help are not working ,on click.
+5.For Jobseeker-->Last option on that page (for Social media)for instagram,for twitter,for Linked in current page navigate to My Profile page. 
+6.For jobseeker-->in edit profile-->for Education-->if any option is not selected from drop-down then also it accepted.
+
+
+
+***Defects in Owner Module:-(By Manual Testing):-
+1.
+2.
