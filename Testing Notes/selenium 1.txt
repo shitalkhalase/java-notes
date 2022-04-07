@@ -1,0 +1,821 @@
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Alert {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","resources123\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+        String alertMessage = "";
+
+        driver.get("http://jsbin.com/usidix/1");
+        driver.findElement(By.xpath("/html/body/input")).click();
+        
+        Thread.sleep(1000);
+        alertMessage = driver.switchTo().alert().getText();
+        driver.switchTo().alert().accept();
+       
+        System.out.println(alertMessage);
+        driver.quit();
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.NoAlertPresentException;	
+import org.openqa.selenium.Alert;
+public class AlertDemo {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver","E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		Thread.sleep(2000);
+		WebDriver driver = new ChromeDriver();
+	
+		
+		  
+        // Alert Message handling
+                    		
+        driver.get("http://demo.guru99.com/test/delete_customer.php");			
+                            		
+     	      	 
+        driver.findElement(By.name("cusid")).sendKeys("53920");					
+        driver.findElement(By.name("submit")).submit();			
+        		
+        // Switching to Alert        
+        Alert alert = driver.switchTo().alert();		
+        		
+        // Capturing alert message.    
+        String alertMessage= driver.switchTo().alert().getText();		
+        		
+        // Displaying alert message		
+        System.out.println(alertMessage);	
+        Thread.sleep(5000);
+        		
+        // Accepting alert		
+         alert.accept();	
+        //alert.dismiss();
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class BasicLocators {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+	WebDriver driver = new ChromeDriver();
+	
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+		driver.manage().window().maximize();
+	    Thread.sleep(3000);
+	    //User Name
+	    driver.findElement(By.id("txtUsername")).sendKeys("Admin");
+	    //Pssword
+	    driver.findElement(By.id("txtPassword")).sendKeys("admin123");
+	    
+	   //Login Button
+	    driver.findElement(By.className("button")).click();
+	    //Welcome Admin Button
+	    driver.findElement(By.linkText("Welcome PaulPaulPaul")).click();
+	    Thread.sleep(1000);
+	    //Logout
+	    driver.findElement(By.linkText("Logout")).click();
+	    Thread.sleep(1000);
+	    //close Browser
+	    driver.close();
+	    
+	
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class DEMO {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://omayo.blogspot.com/");
+		
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class DragDrop {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.manage().window().maximize();
+	    Thread.sleep(3000);
+		driver.get("https://jqueryui.com/resources/demos/droppable/default.html");
+        WebElement source =driver.findElement(By.cssSelector("#draggable"));
+        WebElement Dest = driver.findElement(By.cssSelector("#droppable"));
+        Actions  action = new Actions(driver);
+        action.dragAndDrop(source, Dest).build().perform();
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class DropdownSelect {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		WebDriver driver =new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://omayo.blogspot.com/");
+		Select dropdown =new Select(driver.findElement(By.id("drop1")));
+		dropdown.selectByVisibleText("doc 4");
+		//dropdown.selectByIndex(3);
+		//dropdown.selectByValue("jkl");
+		
+		
+		
+		driver.close();
+		
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class FacebookReg {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","resources123\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window();
+		Thread.sleep(3000);
+		driver.get("https://www.facebook.com/");
+		//First Name
+	    driver.findElement(By.name("firstname")).sendKeys("Shila");
+	    //Last Name
+	    driver.findElement(By.name("lastname")).sendKeys("Jadhav");
+	    //Email
+	    driver.findElement(By.name("reg_email__")).sendKeys("shilajadhav516@gmail.com");
+	    //Password
+	    driver.findElement(By.name("reg_passwd__")).sendKeys("shila123@");
+
+	    
+		
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Guru99_ConfirmationAlert {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver","resources123\\chromedriver.exe");
+		Thread.sleep(2000);
+		WebDriver driver = new ChromeDriver();
+		
+		
+		driver.manage().window().maximize();
+		driver.get("http://demo.guru99.com/V4/index.php");//url
+		Thread.sleep(2000);
+      
+		driver.findElement(By.xpath("/html/body/form/table/tbody/tr[1]/td[2]/input")).sendKeys("mngr372342");
+        driver.findElement(By.xpath("/html/body/form/table/tbody/tr[2]/td[2]/input")).sendKeys("AvahApE");
+        Thread.sleep(1000);
+        
+        //click on Login button
+	    driver.findElement(By.xpath("/html/body/form/table/tbody/tr[3]/td[2]/input[1]")).click();
+	    Thread.sleep(1000);
+	    
+	    /*************************Confirmation Alert*********************************/   
+	  //Step 1:-To Display Data:-   
+	       System.out.println("Confirmation Alert Message:  \n"+driver.switchTo().alert().getText());
+	       Thread.sleep(1000);
+	
+	//Step 2:-Click on Ok button:-
+	       driver.switchTo().alert().accept();
+	       Thread.sleep(1000);
+	       
+	       driver.close();
+        
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Guru99 {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "resources123\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://demo.guru99.com/V4/");
+		WebElement a = driver.findElement(By.name("uid"));
+		a.sendKeys("mngr372342");
+		a.sendKeys(Keys.TAB+"AvahApE");
+		WebElement b =driver.findElement(By.name("btnLogin"));
+		b.click();
+		driver.findElement(By.xpath("//a[text()='New Customer']")).click();
+		driver.findElement(By.name("name")).sendKeys("shila");
+		driver.findElement(By.cssSelector("input[value='f']")).click();
+		driver.findElement(By.name("dob")).sendKeys("16/05/1997");
+		driver.findElement(By.name("addr")).sendKeys("Mankhurd maharashtra nagar");
+		driver.findElement(By.name("city")).sendKeys("Mumbai");
+		driver.findElement(By.name("state")).sendKeys("Maharashtra");
+		driver.findElement(By.name("pinno")).sendKeys("400088");
+		driver.findElement(By.name("telephoneno")).sendKeys("9874522455");
+		driver.findElement(By.name("emailid")).sendKeys("shila11y@gmail.com");
+		driver.findElement(By.name("password")).sendKeys("123");
+		driver.findElement(By.name("sub")).click();
+		String id = driver.findElement(By.xpath("//table[@id='customer']//tr[4]//td[2]")).getText();
+		
+		System.out.println(driver.findElement(By.xpath("//table[@id='customer']//tr[4]//td[2]")).getText());
+		
+		driver.findElement(By.xpath("//a[text()='Continue']")).click();
+		driver.findElement(By.xpath("//a[text()='Edit Customer']")).click();
+		
+		driver.findElement(By.name("cusid")).sendKeys(id);
+		driver.findElement(By.name("AccSubmit")).click();
+		WebElement add =driver.findElement(By.name("addr"));
+		add.clear();
+		add.sendKeys("chembur");
+		WebElement c =driver.findElement(By.name("city"));
+		c.clear();
+		add.sendKeys("panvel");
+		WebElement s =driver.findElement(By.name("state"));
+		s.clear();
+		s.sendKeys("Mah");
+		WebElement p =driver.findElement(By.name("pinno"));
+		p.clear();
+		p.sendKeys("58223");
+		WebElement t =driver.findElement(By.name("telephoneno"));
+		t.clear();
+		t.sendKeys("55563");
+		
+	
+		driver.findElement(By.name("sub")).click();
+   
+		driver.findElement(By.xpath("//a[text()='Continue']")).click();
+		driver.findElement(By.xpath("//a[text()='Delete Customer']")).click();
+	
+		
+	driver.findElement(By.name("cusid")).sendKeys(id);
+		driver.findElement(By.name("AccSubmit")).click();
+		driver.switchTo().alert().accept();
+		driver.switchTo().alert().accept();
+		driver.findElement(By.xpath("//a[text()='Log out']")).click();
+		driver.switchTo().alert().accept();
+		
+	
+		
+		
+		
+		
+		
+		
+
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class iframe {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		
+		
+		Thread.sleep(2000);
+		WebDriver driver=new ChromeDriver();
+		driver.get("http://demo.automationtesting.in/Frames.html");
+		driver.manage().window().maximize();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("/html/body")).click();
+		driver.switchTo().frame(0);
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@type='text']")).sendKeys("xyz");  
+		driver.switchTo().defaultContent();
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class keyfunction {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();// window maximize
+		 driver.get("http://demo.automationtesting.in/Register.html");
+		
+		WebElement firstname=driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[1]/div[1]/input"));
+		firstname.sendKeys("Maxgen");
+       
+	        Thread.sleep(1000);
+	     
+       driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[1]/div[1]/input")).sendKeys(Keys.chord(Keys.CONTROL,"a"));
+         Thread.sleep(1000);
+         driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[1]/div[1]/input")).sendKeys(Keys.chord(Keys.CONTROL,"c"));
+         Thread.sleep(1000);
+         driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[1]/div[2]/input")).sendKeys(Keys.chord(Keys.CONTROL,"v"));
+         Thread.sleep(1000);
+		  driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[1]/div[2]/input")).sendKeys(Keys.chord(Keys.CONTROL,"a"));
+		  Thread.sleep(1000);
+          driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[1]/div[2]/input")).sendKeys(Keys.chord(Keys.DELETE));
+         Thread.sleep(1000);
+         driver.findElement(By.xpath("/html/body/section/div/div/div[2]/form/div[1]/div[2]/input")).sendKeys(Keys.chord(Keys.TAB));	
+       
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Login_usingBluestartrailers {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","resources123\\chromedriver.exe");
+		WebDriver driver=new ChromeDriver();
+        driver.get("https://opensource-demo.bluestartrailers.com/index.php");
+        driver.manage().window().maximize();
+        Thread.sleep(1000);
+        //Link-text
+        driver.findElement(By.linkText ("B ")).click();
+        //Button-Top
+        // driver.findElement(By.linkText("top-text")).click();
+        //Phone-Number
+        driver.findElement(By.linkText("tel:0390424390")).click();
+        Thread.sleep(1000);
+        //Link-text
+        driver.findElement(By.linkText("HOME")).click();
+        //Link-text
+        driver.findElement(By.linkText("ABOUT")).click();
+        //Link-text
+        driver.findElement(By.linkText("TRAILERS")).click();
+         //Link-text
+        driver.findElement(By.linkText("REQUEST A QUOTE")).click();
+        //Link-text
+        driver.findElement(By.linkText("GALLERY")).click();
+        //Link-text
+        driver.findElement(By.linkText("TESTIMONIALS")).click();
+        //Link-text
+        driver.findElement(By.linkText("CONTACT US")).click();
+        //Link-text
+        driver.findElement(By.linkText("SEARCH")).click();
+        //Close Browser
+        driver.close();
+		
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class LoginUsingxpath {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","resources\\chromedrivernew.exe");
+		ChromeDriver driver = new ChromeDriver();
+	
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+		driver.manage().window().maximize();
+	    Thread.sleep(3000);
+	    //User Nmae
+	    driver.findElement(By.xpath("//*[@id=\"txtUsername\"]")).sendKeys("Admin");     
+	    //password
+	    driver.findElement(By.xpath("//*[@id=\"txtPassword\"]")).sendKeys("admin123");
+	    //Login Button
+	    
+	    driver.findElement(By.xpath("//*[@id=\"btnLogin\"]")).click();
+	    //Welcome link
+	    driver.findElement(By.xpath("//*[@id=\"welcome\"]")).click();
+	    Thread.sleep(2000);
+	    driver.findElement(By.xpath("//*[@id=\"welcome-menu\"]/ul/li[3]/a")).click();
+	    driver.close();
+	    
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Mouse {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.bluestartrailers.com.au/");
+		WebElement test =driver.findElement(By.cssSelector("a[title='Testimonials']"));
+		Actions a =new Actions(driver);
+	    a.moveToElement(test).build().perform();
+	    WebElement gallery =driver.findElement(By.cssSelector("a[title='Gallery']"));
+	    a.doubleClick(gallery).build().perform();
+	    
+	    WebElement contact =driver.findElement(By.cssSelector("a[title='Contact Us']"));
+	    a.contextClick(contact).build().perform();
+	    
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Mousehover {
+
+	public static void main(String[] args)  {
+		System.setProperty("webdriver.chrome.driver","E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		
+		
+		driver.manage().window().maximize();
+		driver.get("http://omayo.blogspot.com/");
+		
+	   
+	    
+	       WebElement ele = driver.findElement(By.id("home"));
+	       Actions action = new Actions(driver);
+	       action.moveToElement(ele).perform();
+	       
+	       
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Neworangehrm {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "resources123\\chromedriver.exe");
+		Thread.sleep(2000);
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+        driver.manage().window().maximize();
+        
+		
+		
+		 //Username
+        driver.findElement(By.name("txtUsername")).sendKeys("Admin");
+            
+        //Password
+        driver.findElement(By.name("txtPassword")).sendKeys("admin123");
+    
+        //Login
+        driver.findElement(By.name("Submit")).click();
+        Thread.sleep(500);
+        //Admin
+        driver.findElement(By.linkText("Admin")).click();
+        driver.findElement(By.id("menu_admin_UserManagement")).click();
+        driver.findElement(By.id("menu_admin_Job")).click();
+        driver.findElement(By.id("menu_admin_Organization")).click();
+        driver.findElement(By.id("menu_admin_Qualifications")).click();
+        driver.findElement(By.id("menu_admin_nationality")).click();
+        driver.findElement(By.id("menu_admin_Configuration")).click();
+        Thread.sleep(500);
+        //Pim
+        driver.findElement(By.linkText("PIM")).click();
+        driver.findElement(By.id("menu_pim_Configuration")).click();
+        driver.findElement(By.id("menu_pim_viewEmployeeList")).click();
+        driver.findElement(By.id("menu_pim_addEmployee")).click();
+        driver.findElement(By.id("menu_core_viewDefinedPredefinedReports")).click();
+        Thread.sleep(500);
+        //Leave
+        driver.findElement(By.linkText("Leave")).click();
+        driver.findElement(By.id("menu_leave_applyLeave")).click();
+        driver.findElement(By.id("menu_leave_viewMyLeaveList")).click();
+        driver.findElement(By.id("menu_leave_Entitlements")).click();
+        driver.findElement(By.id("menu_leave_Reports")).click();
+        driver.findElement(By.id("menu_leave_Configure")).click();
+        driver.findElement(By.id("menu_leave_viewLeaveList")).click();
+        driver.findElement(By.id("menu_leave_assignLeave")).click();
+        Thread.sleep(500);
+        //Time
+       /* driver.findElement(By.linkText("Time")).click();
+        driver.findElement(By.id("menu_time_Timesheets")).click();
+        driver.findElement(By.id("menu_attendance_Attendance")).click();
+        driver.findElement(By.id("menu_time_Reports")).click();
+        driver.findElement(By.id("menu_admin_ProjectInfo")).click();
+        Thread.sleep(500);*/
+        //Recruitment
+        driver.findElement(By.linkText("Recruitment")).click();
+        driver.findElement(By.id("menu_recruitment_viewCandidates")).click();
+        driver.findElement(By.id("menu_recruitment_viewCandidates")).click();
+        Thread.sleep(2000);
+        //My info
+        driver.findElement(By.linkText("My Info")).click();
+        Thread.sleep(2000);
+        //Performance  
+        driver.findElement(By.id("menu__Performance")).click();
+        driver.findElement(By.id("menu_performance_Configure")).click();
+        driver.findElement(By.id("menu_performance_ManageReviews")).click();
+        driver.findElement(By.id("menu_performance_viewMyPerformanceTrackerList")).click();
+        driver.findElement(By.id("menu_performance_viewEmployeePerformanceTrackerList")).click();
+        Thread.sleep(2000); 
+        // Dashboard
+       driver.findElement(By.id("menu_dashboard_index")).click();
+       Thread.sleep(500);
+      //Directory
+        driver.findElement(By.id("menu_directory_viewDirectory")).click();
+        Thread.sleep(2000);
+      //Maintenance
+        driver.findElement(By.id("menu_maintenance_purgeEmployee")).click();
+        driver.findElement(By.id("menu_maintenance_PurgeRecords")).click();
+        driver.findElement(By.id("menu_maintenance_accessEmployeeData")).click();
+        Thread.sleep(2000);
+        //Buzz
+        driver.findElement(By.id("menu_buzz_viewBuzz")).click();
+        driver.close();
+
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Omayo {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		Thread.sleep(2000);
+		WebDriver driver = new ChromeDriver();
+		
+		//url
+		driver.manage().window().maximize();
+		driver.get("http://omayo.blogspot.com/");
+		Thread.sleep(2000);
+		
+		// Locating XPath of the element(using Firebug)
+		WebElement elem = driver.findElement(By.xpath("//*[@id=\"uploadfile\"]"));
+		// Mention the path of file to do the upload
+		elem.sendKeys("C:\\Users\\shila\\Desktop\\xpath.txt");
+
+    //driver.findElement(By.id("uploadfile")).sendKeys("C:\\Users\\shila\\Desktop\\xpath.txt");
+      
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class orangehrm {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "resources123\\chromedriver.exe");
+		Thread.sleep(2000);
+		WebDriver driver = new ChromeDriver();
+		
+		//url
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+		Thread.sleep(2000);
+      
+		driver.findElement(By.id("txtUsername")).sendKeys("admin");
+		Thread.sleep(1000);
+        driver.findElement(By.id("txtPassword")).sendKeys("admin123");
+        Thread.sleep(1000);
+        
+        //click on Login button
+	    driver.findElement(By.id("btnLogin")).click();
+	    Thread.sleep(1000);
+	    
+	   	  
+	    
+	       //1:-for Selenium Module
+	   //   WebElement Selenium = driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[2]/ul[1]/li[1]/a[1]/b[1]"));
+	   
+	     //Creating object of an Actions class
+	      Actions action = new Actions(driver);
+
+	     //Performing the mouse hover action on the target element.
+	    //  action.moveToElement(Selenium).perform();   
+	   //   Thread.sleep(1000);
+	 
+	      
+	    //2:-for PIM
+		  WebElement PIM = driver.findElement(By.xpath("//a[@id='menu_pim_viewPimModule']"));
+		  Actions action1 = new Actions(driver);
+ 		  action.moveToElement(PIM).perform();   
+		   Thread.sleep(1000);
+	    
+		 //3:-for Agile Project Module
+		  WebElement AgileProject = driver.findElement(By.xpath("//b[contains(text(),'Leave')]"));
+		  Actions action2 = new Actions(driver);
+	 	  action.moveToElement(AgileProject).perform();   
+		   Thread.sleep(1000);
+		   
+		 //4:-for Bank Project Module
+		  WebElement BankProject = driver.findElement(By.xpath("//b[contains(text(),'Time')]"));
+		  Actions action3 = new Actions(driver);
+		  action.moveToElement(BankProject).perform();   
+		  Thread.sleep(1000);
+			   
+		  //5:-for Security Project Module
+		  WebElement SecurityProject = driver.findElement(By.xpath("//b[contains(text(),'Recruitment')]"));
+		  Actions action4 = new Actions(driver);
+		  action.moveToElement(SecurityProject).perform();   
+		  Thread.sleep(1000);
+		  
+		  //6:-for Telecom Project Module
+		  WebElement TelecomProject = driver.findElement(By.xpath("//b[contains(text(),'My Info')]"));
+		  Actions action5 = new Actions(driver);
+		  action.moveToElement(TelecomProject).perform();   
+		  Thread.sleep(1000);
+		  
+		  //7:-for Payment Gateway Project Module
+		  WebElement PaymentGatewayProject = driver.findElement(By.xpath("//b[contains(text(),'Performance')]"));
+		  Actions action6 = new Actions(driver);
+		  action.moveToElement(PaymentGatewayProject).perform();   
+		  Thread.sleep(1000);
+		  
+	   	//8:-for Payment Gateway Project Module
+		  WebElement NewTours = driver.findElement(By.xpath("//b[contains(text(),'Directory')]"));
+		  Actions action7 = new Actions(driver);
+		  action.moveToElement(NewTours).perform();   
+		  Thread.sleep(1000);
+		 
+		  
+		  driver.findElement(By.id("welcome")).click(); 
+		  
+		  Thread.sleep(1000);
+	      //Select obj1 = new Select(LOGOUT);
+	      //obj1.selectByVisibleText("Logout");
+	      //Thread.sleep(2000);
+	      
+		  //driver.close();
+		    
+
+
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+
+public class popup {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver","resources\\chromedrivernew.exe");
+		
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://www.naukri.com/");
+		String parent = driver.getWindowHandle();
+		System.out.println(parent);
+		Thread.sleep(2000);
+		System.out.println(driver.getTitle());
+		Set<String> win = driver.getWindowHandles();
+		System.out.println(win.size());
+		Thread.sleep(2000);
+		Iterator<String> str = win.iterator();
+		while(str.hasNext())
+		{
+			String a = str.next();
+			driver.switchTo().window(a);
+			System.out.println(driver.getTitle());
+		}
+	        driver.close();
+
+	}
+
+}
+****************************************************************************
+package selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Scrollbyvisible {
+
+	public static void main(String[] args) throws InterruptedException {
+System.setProperty("webdriver.chrome.driver","E:\\selenium new\\chromedriver_win32 (5)\\chromedriver.exe");
+		
+		WebDriver driver=new ChromeDriver();
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+
+        //Launch the application		
+        driver.get("https://www.browserstack.com/guide/selenium-scroll-tutorial");
+         Thread.sleep(1000);
+        //Locating element by link text and store in variable "Element"        		
+          WebElement Element = driver.findElement(By.linkText("Try Selenium Testing For Free"));
+
+        // Scrolling down the page till the element is found		
+        js.executeScript("arguments[0].scrollIntoView();",Element);
+
+	}
+
+}
+****************************************************************************

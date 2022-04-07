@@ -1,0 +1,341 @@
+package introduction;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Dragdrop {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "resources\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://jqueryui.com/resources/demos/droppable/default.html");
+        WebElement source =driver.findElement(By.cssSelector("#draggable"));
+        WebElement Dest = driver.findElement(By.cssSelector("#droppable"));
+        Actions  action = new Actions(driver);
+        action.dragAndDrop(source, Dest).build().perform();
+        
+	}
+
+}
+****************************************************************************
+package introduction;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class Excelwrite {
+
+	public static void main(String[] args) throws FileNotFoundException {
+	
+		File f=new File("E:\\New Folder\\Book1.xlsx");
+		FileInputStream file=new FileInputStream(f);
+		
+		XSSFWorkbook sheet=new XSSFWorkbook();
+		XSSFSheet s1 = sheet.getSheet("Sheet1");
+		XSSFRow r1 = s1.getRow(5);
+		XSSFCell c1 = r1.getCell(2);
+		double str = c1.getNumericCellValue();
+		System.out.println(str);
+	}
+
+}
+****************************************************************************
+package introduction;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Frame {
+
+	public static void main(String[] args) {
+	//	WebDriverManager.chromedriver().setup(); 
+	//	System.setProperty("webdriver.chrome.driver", "resources\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://demo.automationtesting.in/Frames.html");
+		driver.findElement(By.xpath("//a[text()='Single Iframe ']")).click();
+		driver.switchTo().frame(0);
+		driver.findElement(By.cssSelector("input[type='text']")).sendKeys("shila");
+		driver.switchTo().defaultContent();
+		driver.findElement(By.xpath("//a[text()='Iframe with in an Iframe']")).click();
+		driver.switchTo().frame(1);
+		driver.switchTo().frame(0);
+		driver.findElement(By.cssSelector("input[type='text']")).sendKeys("shila");
+		driver.switchTo().defaultContent();
+	}
+
+}
+****************************************************************************
+package introduction;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Greenkart {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "resources\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://rahulshettyacademy.com/seleniumPractise/#/");
+		List<WebElement> item =driver.findElements(By.cssSelector(".product-name"));
+		for(int i=0;i<item.size();i++) {
+			String name=item.get(i).getText();
+			if(name.contains("Beetroot")) {
+				driver.findElements(By.xpath("//div[@class='product']//div//button")).get(i).click();
+			}
+		}
+		
+
+	}
+
+}
+****************************************************************************
+package introduction;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Guru99 {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "resources\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://demo.guru99.com/V4/");
+		WebElement a = driver.findElement(By.name("uid"));
+		a.sendKeys("mngr315305");
+		a.sendKeys(Keys.TAB+"ememaby");
+		WebElement b =driver.findElement(By.name("btnLogin"));
+		b.click();
+		driver.findElement(By.xpath("//a[text()='New Customer']")).click();
+		driver.findElement(By.name("name")).sendKeys("shila");
+		driver.findElement(By.cssSelector("input[value='f']")).click();
+		driver.findElement(By.name("dob")).sendKeys("16/05/1993");
+		driver.findElement(By.name("addr")).sendKeys("Mankhurd maharashtra nagar");
+		driver.findElement(By.name("city")).sendKeys("Mumbai");
+		driver.findElement(By.name("state")).sendKeys("Maharashtra");
+		driver.findElement(By.name("pinno")).sendKeys("400088");
+		driver.findElement(By.name("telephoneno")).sendKeys("9874522455");
+		driver.findElement(By.name("emailid")).sendKeys("shila125y@gmail.com");
+		driver.findElement(By.name("password")).sendKeys("123");
+		driver.findElement(By.name("sub")).click();
+		String id = driver.findElement(By.xpath("//table[@id='customer']//tr[4]//td[2]")).getText();
+		
+		System.out.println(driver.findElement(By.xpath("//table[@id='customer']//tr[4]//td[2]")).getText());
+		
+		driver.findElement(By.xpath("//a[text()='Continue']")).click();
+		driver.findElement(By.xpath("//a[text()='Edit Customer']")).click();
+		
+		driver.findElement(By.name("cusid")).sendKeys(id);
+		driver.findElement(By.name("AccSubmit")).click();
+		WebElement add =driver.findElement(By.name("addr"));
+		add.clear();
+		add.sendKeys("chembur");
+		WebElement c =driver.findElement(By.name("city"));
+		c.clear();
+		add.sendKeys("panvel");
+		WebElement s =driver.findElement(By.name("state"));
+		s.clear();
+		s.sendKeys("Mah");
+		WebElement p =driver.findElement(By.name("pinno"));
+		p.clear();
+		p.sendKeys("58223");
+		WebElement t =driver.findElement(By.name("telephoneno"));
+		t.clear();
+		t.sendKeys("55563");
+		
+	
+		driver.findElement(By.name("sub")).click();
+   
+		driver.findElement(By.xpath("//a[text()='Continue']")).click();
+		driver.findElement(By.xpath("//a[text()='Delete Customer']")).click();
+	
+		
+	driver.findElement(By.name("cusid")).sendKeys(id);
+		driver.findElement(By.name("AccSubmit")).click();
+		driver.switchTo().alert().accept();
+		driver.switchTo().alert().accept();
+		driver.findElement(By.xpath("//a[text()='Log out']")).click();
+		driver.switchTo().alert().accept();
+		
+	
+		
+		
+		
+		
+		
+		
+
+	}
+
+}
+****************************************************************************
+package introduction;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class keyevent {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "resources\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+		WebElement a = driver.findElement(By.cssSelector("#txtUsername"));
+		a.sendKeys("Admin");
+		a.sendKeys(Keys.TAB+"admin123");
+		WebElement b =driver.findElement(By.cssSelector("#btnLogin"));
+		b.click();
+	}
+
+}
+****************************************************************************
+package introduction;
+
+import org.openqa.selenium.chrome.ChromeDriver;
+
+//import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Locaters {
+
+	public static void main(String[] args) {
+		
+		System.setProperty("webdriver.chrome.driver","resources\\chromedriver.exe");
+		ChromeDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+	
+		
+		
+		
+		
+	}
+
+}
+****************************************************************************
+package introduction;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class screenshot {
+
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "resources\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.spicejet.com/");
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("scrollBy(0,5000)" );
+		TakesScreenshot s= (TakesScreenshot)driver;
+		File source =s.getScreenshotAs(OutputType.FILE);
+		File desc =new File("C:\\shila\\ss\\img.png");
+		
+		FileUtils.copyFile(source,desc);
+
+	
+	}
+
+}
+***************************************************************************
+package introduction;
+
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Scroll {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "resources\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.bluestartrailers.com.au/");
+		JavascriptExecutor js=(JavascriptExecutor)driver;
+		js.executeScript("scrollBy(0,5000)" );
+
+	}
+
+}
+***************************************************************************
+package introduction;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+
+
+public class spicejet {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "resources\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.spicejet.com/");
+		
+	driver.findElement(By.cssSelector("#ctl00_mainContent_ddl_originStation1_CTXT")).click();
+	driver.findElement(By.cssSelector("a[value=BLR]")).click();
+	
+	driver.findElement(By.cssSelector("#ctl00_mainContent_ddl_destinationStation1_CTXT")).click();
+	driver.findElement(By.xpath("//div[@id='ctl00_mainContent_ddl_destinationStation1_CTNR']")).click();
+
+		
+      driver.findElement(By.cssSelector("#divpaxinfo")).click();
+      WebElement adult = driver.findElement(By.id("ctl00_mainContent_ddl_Adult"));
+      Select select =new Select(adult);
+      select.selectByValue("2");
+      Thread.sleep(2000);
+      
+      WebElement child = driver.findElement(By.id("ctl00_mainContent_ddl_Child"));
+      Select select1 =new Select(child);
+      select1.selectByValue("3");
+      Thread.sleep(2000);
+
+      WebElement infant = driver.findElement(By.id("ctl00_mainContent_ddl_Infant"));
+      Select select2 =new Select(infant);
+      select2.selectByValue("1");
+      Thread.sleep(2000);
+		
+	}
+	}
+	
+
+
+****************************************************************************
